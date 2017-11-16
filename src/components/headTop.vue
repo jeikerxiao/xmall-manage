@@ -6,10 +6,10 @@
 			<el-breadcrumb-item v-for="(item, index) in $route.meta" key="index">{{item}}</el-breadcrumb-item>
 		</el-breadcrumb>
 		<el-dropdown @command="handleCommand" menu-align='start'>
-			<img :src="baseImgPath + adminInfo.avatar" class="avator">
+			<img :src="baseImgPath" class="avator">
 			<el-dropdown-menu slot="dropdown">
 				<el-dropdown-item command="home">首页</el-dropdown-item>
-				<el-dropdown-item command="singout">退出</el-dropdown-item>
+				<el-dropdown-item command="logout">退出</el-dropdown-item>
 			</el-dropdown-menu>
 		</el-dropdown>
     </div>
@@ -23,7 +23,7 @@
     export default {
     	data(){
     		return {
-    			baseImgPath,
+    			baseImgPath:"https://avatars0.githubusercontent.com/u/11225108",
     		}
     	},
     	created(){
@@ -37,22 +37,25 @@
 		methods: {
 			...mapActions(['getAdminData']),
 			async handleCommand(command) {
+			    // 首页
 				if (command == 'home') {
 					this.$router.push('/manage');
-				}else if(command == 'singout'){
-					const res = await signout()
-					if (res.status == 1) {
-						this.$message({
-	                        type: 'success',
-	                        message: '退出成功'
-	                    });
-	                    this.$router.push('/');
-					}else{
-						this.$message({
-	                        type: 'error',
-	                        message: res.message
-	                    });
-					}
+					// 退出
+				}else if(command == 'logout'){
+                    this.$router.push('/');
+//					const res = await signout()
+//					if (res.status == 1) {
+//						this.$message({
+//	                        type: 'success',
+//	                        message: '退出成功'
+//	                    });
+//                        this.$router.push('/');
+//					}else{
+//						this.$message({
+//	                        type: 'error',
+//	                        message: res.message
+//	                    });
+//					}
 				}
 			},
 		}

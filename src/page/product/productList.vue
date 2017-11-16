@@ -2,6 +2,12 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+            <el-row>
+                <el-col :span="4">
+                    <el-button type="primary">新增产品</el-button>
+                </el-col>
+            </el-row>
+            <div class="top20"></div>
             <el-table
                 :data="tableData"
                 highlight-current-row

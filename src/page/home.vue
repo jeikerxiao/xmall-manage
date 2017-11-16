@@ -29,22 +29,27 @@
 
 <script>
 	import headTop from '../components/headTop'
-	import tendency from '../components/tendency' 
+	import tendency from '../components/tendency'
 	import dtime from 'time-formater'
 	import {apiCount, userCount, orderCount, apiAllCount, getUserCount, getOrderCount, adminDayCount, adminCount} from '@/api/getData'
     export default {
     	data(){
     		return {
-    			apiCount: null,
-    			userCount: null,
-    			orderCount: null,
-                adminCount: null,
-                allApiCount: null,
-                allUserCount: null,
-                allOrderCount: null,
-                allAdminCount: null,
+    			apiCount: 1110,
+    			userCount: 230,
+    			orderCount: 234,
+                adminCount: 3,
+                allApiCount: 1231212,
+                allUserCount: 12312,
+                allOrderCount: 12311,
+                allAdminCount: 346,
     			sevenDay: [],
-    			sevenDate: [[],[],[],[]],
+    			sevenDate: [
+    			    [],
+                    [],
+                    [],
+                    [],
+                ],
     		}
     	},
     	components: {
@@ -52,7 +57,7 @@
     		tendency,
     	},
     	mounted(){
-    		this.initData();
+//    		this.initData();
     		for (let i = 6; i > -1; i--) {
     			const date = dtime(new Date().getTime() - 86400000*i).format('YYYY-MM-DD')
     			this.sevenDay.push(date)
