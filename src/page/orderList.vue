@@ -58,7 +58,7 @@
 
 <script>
     import headTop from '../components/headTop'
-    import {getOrderList, getOrderCount, getResturantDetail, getUserInfo, getAddressById} from '@/api/getData'
+//    import {getOrderList, getOrderCount, getResturantDetail, getUserInfo, getAddressById} from '@/api/getData'
     export default {
         data(){
             return {
@@ -77,7 +77,7 @@
     	},
         created(){
         	this.restaurant_id = this.$route.query.restaurant_id;
-            this.initData();
+//            this.initData();
         },
         mounted(){
 

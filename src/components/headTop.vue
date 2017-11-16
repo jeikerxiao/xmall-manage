@@ -16,7 +16,7 @@
 </template>
 
 <script>
-	import {signout} from '@/api/getData'
+//	import {signout} from '@/api/getData'
 	import {baseImgPath} from '@/config/env'
 	import {mapActions, mapState} from 'vuex'
 
@@ -28,7 +28,7 @@
     	},
     	created(){
     		if (!this.adminInfo.id) {
-    			this.getAdminData()
+//    			this.getAdminData()
     		}
     	},
     	computed: {

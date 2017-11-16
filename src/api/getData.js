@@ -3,8 +3,38 @@ import fetch from '@/config/fetch'
 /**
  * 登陆
  */
-
 export const login = data => fetch('/manage/user/login', data, 'POST');
+
+/**
+ * 产品
+ */
+export const productList = data => fetch('/manage/product/list', data, 'POST');
+export const productDetail = data => fetch('/manage/product/detail', data, 'POST');
+export const productAdd = data => fetch('/manage/product/add', data, 'POST');
+export const productSearch = data => fetch('/manage/product/search', data, 'POST');
+export const productStatus = data => fetch('/manage/product/status', data, 'POST');
+export const productUpload = data => fetch('/manage/product/upload', data, 'POST');
+export const productRichUpload = data => fetch('/manage/product/rich/upload', data, 'POST');
+
+/**
+ * 类别
+ */
+export const categoryList = data => fetch('/manage/category/list', data, 'POST');
+export const categoryAdd = data => fetch('/manage/category/add', data, 'POST');
+export const categorySelect = data => fetch('/manage/category/select', data, 'POST');
+export const categoryUpdate = data => fetch('/manage/category/update', data, 'POST');
+
+
+/**
+ * 订单
+ */
+export const orderList = data => fetch('/manage/order/list', data, 'POST');
+export const orderDetail = data => fetch('/manage/order/detail', data, 'POST');
+export const orderSearch = data => fetch('/manage/order/search', data, 'POST');
+export const orderSend = data => fetch('/manage/order/send', data, 'POST');
+
+
+
 
 /**
  * 退出
@@ -73,7 +103,7 @@ export const adminCount = () => fetch('/admin/count');
  */
 
 export const cityGuess = () => fetch('/v1/cities', {
-	type: 'guess'
+    type: 'guess'
 });
 
 /**
@@ -87,9 +117,9 @@ export const addShop = data => fetch('/shopping/addShop', data, 'POST');
  */
 
 export const searchplace = (cityid, value) => fetch('/v1/pois', {
-	type: 'search',
-	city_id: cityid,
-	keyword: value
+    type: 'search',
+    city_id: cityid,
+    keyword: value
 });
 
 /**
@@ -205,11 +235,5 @@ export const getAddressById = address_id => fetch('/v1/addresse/' + address_id);
  * 获取用户分布信息
  */
 export const getUserCity = () => fetch('/v1/user/city/count');
-
-/**
- * 获取产品列表
- */
-export const productList = data => fetch('/manage/product/list', data, 'POST');
-
 
 

@@ -1,9 +1,9 @@
 {
-  "name": "vue2-manage",
-  "version": "1.0.1",
-  "description": "vue2-manage",
-  "author": "cangdu <1264889788@qq.com>",
-  "license": "GPL",
+  "name": "xmall-manage",
+  "version": "1.0.0",
+  "description": "xmall-manage",
+  "author": "jeiker@126.com",
+  "license": "MTL",
   "private": true,
   "scripts": {
     "online": "cross-env NODE_ENV=online node build/dev-server.js",

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import headTop from '../components/headTop'
+    import headTop from '../../components/headTop'
     import {productList} from '@/api/getData'
     export default {
         data(){
@@ -120,7 +120,7 @@
 </script>
 
 <style lang="less">
-	@import '../style/mixin';
+	@import '../../style/mixin';
     .table_container{
         padding: 20px;
     }
