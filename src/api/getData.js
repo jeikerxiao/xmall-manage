@@ -6,6 +6,11 @@ import fetch from '@/config/fetch'
 export const login = data => fetch('/manage/user/login', data, 'POST');
 
 /**
+ * 用户
+ */
+export const userList = data => fetch('/manage/user/list');
+
+/**
  * 产品
  */
 export const productList = data => fetch('/manage/product/list', data, 'POST');

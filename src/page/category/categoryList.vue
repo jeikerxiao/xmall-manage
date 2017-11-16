@@ -30,6 +30,15 @@
                   property="createTime"
                   label="创建时间">
                 </el-table-column>
+                <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="100">
+                    <template slot-scope="scope">
+                        <el-button @click="handleClick(scope.row)" type="text" size="small">修改</el-button>
+                        <el-button type="text" size="small">删除</el-button>
+                    </template>
+                </el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -113,13 +122,23 @@
                 console.log("==> getCategory {}", Result.data)
                 this.tableData = [];
                 if (Result.status === 0) {
-                    this.tableData = Result.data;
+//                    this.tableData = Result.data;
+                    Result.data.forEach(item => {
+                        const tableData = {};
+                        tableData.id = item.id;
+                        tableData.name = item.name;
+                        tableData.createTime = dtime(item.createTime).format('YYYY-MM-DD HH:MM:SS');
+                        this.tableData.push(tableData);
+                    })
                     this.count = this.tableData.length;
                 } else {
                     throw new Error('getCategory 获取数据失败');
                 }
 
-            }
+            },
+            handleClick(row) {
+                console.log(row);
+            },
         },
     }
 </script>

@@ -7,7 +7,6 @@ const login = r => require.ensure([], () => r(require('@/page/login')), 'login')
 const manage = r => require.ensure([], () => r(require('@/page/manage')), 'manage');
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home');
 
-const userList = r => require.ensure([], () => r(require('@/page/userList')), 'userList');
 const shopList = r => require.ensure([], () => r(require('@/page/shopList')), 'shopList');
 const foodList = r => require.ensure([], () => r(require('@/page/foodList')), 'foodList');
 // const orderList = r => require.ensure([], () => r(require('@/page/orderList')), 'orderList');
@@ -27,6 +26,7 @@ const explain = r => require.ensure([], () => r(require('@/page/explain')), 'exp
 /**
  * 用户
  */
+const userList = r => require.ensure([], () => r(require('@/page/user/userList')), 'userList');
 
 /**
  * 产品

@@ -2,6 +2,15 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
+            <el-row :gutter="20">
+                <el-col :span="8">
+                    <el-input v-model="inputSearch" placeholder="请输入订单编号"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-button type="primary" @click="searchBtn()">搜索</el-button>
+                </el-col>
+            </el-row>
+            <div class="top20"></div>
             <el-table
                 :data="tableData"
                 @expand='expand'
@@ -60,7 +69,7 @@
 
 <script>
     import headTop from '@/components/headTop'
-    import { orderList } from '@/api/getData'
+    import { orderList, orderSearch } from '@/api/getData'
     export default {
         data(){
             return {
@@ -99,6 +108,7 @@
                 currentPage: 1,
                 restaurant_id: null,
                 expendRow: [],
+                inputSearch: '',
             }
         },
         components: {
@@ -136,7 +146,15 @@
                 console.log("==> getOrders {}", Result.data)
                 this.tableData = [];
                 if (Result.status === 0) {
-                    this.tableData = Result.data.list;
+//                    this.tableData = Result.data.list;
+                    Result.data.list.forEach(item => {
+                        const tableData = {};
+                        tableData.orderNo = item.orderNo;
+                        tableData.payment = '￥' + item.payment;
+                        tableData.statusDesc = item.statusDesc;
+                        tableData.shippingVo = item.shippingVo;
+                        this.tableData.push(tableData);
+                    })
                     this.count = this.tableData.length;
                 } else {
                     throw new Error('getOrders 获取数据失败');
@@ -163,6 +181,31 @@
 //                    const index = this.expendRow.indexOf(row.index);
 //                    this.expendRow.splice(index, 1)
 //                }
+            },
+            searchBtn(){
+                console.log(this.inputSearch)
+                this.orderSearch()
+            },
+            async orderSearch(){
+                const Result = await orderSearch({
+                    id : this.inputSearch,
+                    pageNum: this.offset,
+                    pageSize: this.limit,
+                });
+                this.tableData = [];
+                if (Result.status === 0) {
+                    Result.data.list.forEach(item => {
+                        const tableData = {};
+                        tableData.orderNo = item.orderNo;
+                        tableData.payment = '￥' + item.payment;
+                        tableData.statusDesc = item.statusDesc;
+                        tableData.shippingVo = item.shippingVo;
+                        this.tableData.push(tableData);
+                    })
+                    this.count = this.tableData.length;
+                } else {
+                    throw new Error('getProducts 获取数据失败');
+                }
             },
         },
     }
