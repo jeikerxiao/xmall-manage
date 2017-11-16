@@ -44,7 +44,7 @@ const categoryList = r => require.ensure([], () => r(require('@/page/category/ca
 /**
  * 订单
  */
-const orderList = r => require.ensure([], () => r(require('@/page/orderList')), 'orderList');
+const orderList = r => require.ensure([], () => r(require('@/page/order/orderList')), 'orderList');
 // const orderAdd = r => require.ensure([], () => r(require('@/page/order/orderAdd')), 'orderAdd');
 
 
@@ -70,6 +70,10 @@ const routes = [
             component: categoryList,
             meta: ['数据管理', '类别列表'],
         },{
+            path: '/orderList',
+            component: orderList,
+            meta: ['数据管理', '订单列表'],
+        },{
 			path: '/userList',
 			component: userList,
 			meta: ['数据管理', '用户列表'],
@@ -81,10 +85,6 @@ const routes = [
 			path: '/foodList',
 			component: foodList,
 			meta: ['数据管理', '食品列表'],
-		},{
-			path: '/orderList',
-			component: orderList,
-			meta: ['数据管理', '订单列表'],
 		},{
 			path: '/adminList',
 			component: adminList,

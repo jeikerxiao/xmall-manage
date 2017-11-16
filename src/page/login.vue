@@ -3,7 +3,7 @@
 	  	<transition name="form-fade" mode="in-out">
 	  		<section class="form_contianer" v-show="showLogin">
 		  		<div class="manage_tip">
-		  			<p>elm后台管理系统</p>
+		  			<p>Xmall后台管理系统</p>
 		  		</div>
 		    	<el-form :model="loginForm" :rules="rules" ref="loginForm">
 					<el-form-item prop="username">
@@ -25,8 +25,8 @@
 </template>
 
 <script>
-	import {login, getAdminInfo} from '@/api/getData'
-	import {mapActions, mapState} from 'vuex'
+	import { login, getAdminInfo } from '@/api/getData'
+	import { mapActions, mapState } from 'vuex'
 
 	export default {
 	    data(){
@@ -60,7 +60,10 @@
 			async submitForm(formName) {
 				this.$refs[formName].validate(async (valid) => {
 					if (valid) {
-						const res = await login({username: this.loginForm.username, password: this.loginForm.password})
+						const res = await login({
+                            username: this.loginForm.username,
+                            password: this.loginForm.password
+						})
 						if (res.status == 0) {
 							this.$message({
 		                        type: 'success',
